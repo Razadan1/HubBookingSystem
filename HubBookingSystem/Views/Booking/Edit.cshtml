@@ -1,4 +1,9 @@
 ﻿@model HubBookingSystem.Data.Booking
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
 <form method="post">
     <fieldset>
         <div class="border p-3 mt-4">
@@ -16,11 +21,6 @@
             <label asp-for="SeatNumber"></label>
             <input asp-for="SeatNumber" class="form-control"/>
             <span asp-validation-for="SeatNumber" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for="Email" class="form-label mt-4"></label>
-            <input asp-for="Email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div>
         <label asp-for="BookDate" class="form-label mt-4">Date</label>
@@ -42,7 +42,10 @@
                 <label class="form-check-label pb-4" for="notifyemail">Notify me when booking is successful</label>
             </div>
         </fieldset>
-        <button type="submit" class="btn btn-primary" style="width:150px" row>Update <i class="bi bi-bookmark-check"></i></button
+        <button type="submit" class="btn btn-primary" value="Update" style="width:150px" row>Update <i class="bi bi-bookmark-check"></i></button>
+        <div>
+            <a asp-action="Index" class="btn btn-success w-100">Back</a>
+        </div>
     </fieldset>
 </form>
 

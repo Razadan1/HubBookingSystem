@@ -17,7 +17,7 @@ namespace HubBookingSystem.Controllers
         }
         public IActionResult Index()
         {
-            List<Booking> objBookingList = _context.Bookings.ToList();
+            IEnumerable<Booking> objBookingList = _context.Bookings;
             return View(objBookingList);
         }
         [HttpGet]
@@ -26,13 +26,17 @@ namespace HubBookingSystem.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Booking obj)
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Booking booking)
         {
-         
-                _context.Bookings.Add(obj);
+            if(ModelState.IsValid)
+            {
+                _context.Bookings.Add(booking);
                 _context.SaveChanges();
                 _notyfService.Success("Booking created successfully");
                 return RedirectToAction("Index");
+            }
+            return View(booking);
         }
 
         [HttpGet]
@@ -42,7 +46,7 @@ namespace HubBookingSystem.Controllers
             {
                 return NotFound();
             }
-            Booking bookingfromDb = _context.Bookings.Find(id);
+            var bookingfromDb = _context.Bookings.Find(id);
             if(bookingfromDb == null)
             {
                 _notyfService.Error("Id Not found!");
@@ -51,34 +55,46 @@ namespace HubBookingSystem.Controllers
             return View(bookingfromDb);
         }
 
+
         [HttpPost]
-        public IActionResult Edit(Booking obj)
+        public IActionResult Edit(Booking booking)
         {
             if (ModelState.IsValid)
             {
-                _context.Bookings.Update(obj);
+                _context.Bookings.Update(booking);
                 _context.SaveChanges();
                 _notyfService.Success("Booking Edited successfully");
                 return RedirectToAction("Index");
             }
-            return View();
+            return View(booking);
 
         }
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            return View( );
-        }
-
-        [HttpDelete,  ActionName("Delete")]
-        public IActionResult DeletePOST(int? id)
-        {
-            Booking? obj = _context.Bookings.Find(id);
-            if (obj == null)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
-            _context.Bookings.Remove(obj);
+
+            var bookingFromDb = _context.Bookings.Find(id);
+            if(bookingFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(bookingFromDb);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            var bookingFromDb = _context.Bookings.Find(id);
+            if (bookingFromDb == null)
+            {
+                return NotFound();
+            }
+            _context.Bookings.Remove(bookingFromDb);
             _context.SaveChanges();
             _notyfService.Success("Booking deleted successfully");
             return RedirectToAction("Index");

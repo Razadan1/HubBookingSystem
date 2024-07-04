@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace HubBookingSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class NewMigration : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,6 +35,10 @@ namespace HubBookingSystem.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false),
+                    Discriminator = table.Column<string>(type: "varchar(13)", maxLength: 13, nullable: false),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: true),
+                    FirstName = table.Column<string>(type: "longtext", nullable: true),
+                    LastName = table.Column<string>(type: "longtext", nullable: true),
                     UserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true),
@@ -60,7 +64,8 @@ namespace HubBookingSystem.Migrations
                 name: "Bookings",
                 columns: table => new
                 {
-                    BookId = table.Column<Guid>(type: "char(36)", nullable: false),
+                    BookId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false),
                     SeatNumber = table.Column<int>(type: "int", nullable: false),
                     Email = table.Column<string>(type: "longtext", nullable: false),
@@ -71,23 +76,6 @@ namespace HubBookingSystem.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Bookings", x => x.BookId);
-                })
-                .Annotation("MySQL:Charset", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    UserId = table.Column<Guid>(type: "char(36)", nullable: false),
-                    FirstName = table.Column<string>(type: "longtext", nullable: false),
-                    LastName = table.Column<string>(type: "longtext", nullable: false),
-                    UserName = table.Column<string>(type: "longtext", nullable: false),
-                    Email = table.Column<string>(type: "longtext", nullable: false),
-                    Password = table.Column<string>(type: "longtext", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -260,9 +248,6 @@ namespace HubBookingSystem.Migrations
 
             migrationBuilder.DropTable(
                 name: "Bookings");
-
-            migrationBuilder.DropTable(
-                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

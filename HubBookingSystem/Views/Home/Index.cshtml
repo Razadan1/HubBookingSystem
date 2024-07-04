@@ -1,50 +1,118 @@
-﻿<div class="container" style="background-image:url(~/css/assets/img/team/Hub.jpeg)">
-    <div class="btn btn-secondary" data-bs-interval="5000">
+﻿@* <div class="is-boxed has-animations"> *@
+	@* <div class="body-wrap boxed-container"> *@
 
-        <div class="carousel-inner">
+		<div class="container">
+			<div class="site-header-inner">
+				<div class="brand header-brand">
+					<h1 class="m-0">
+						<a href="#">
+							<img class="header-logo-image" src="~/css/images/logo.svg" alt="Logo">
+						</a>
+					</h1>
+				</div>
+			</div>
+		</div>
+		<div class="landing page"  style="background-image:url(~/wwwroot/css/images/hub.jpg))">
+			<section class="text-center text-light">
+				@* <div class="hero-bg"></div>
+				<div class="hero-particles-container">
+					<canvas id="hero-particles"></canvas>
+				</div> *@
+				<div class="container-sm">
+					<div class="hero-inner">
+						<div class="hero-copy">
+							<h1 class="hero-title mt-0">Welcome to <span>Hub Central!</span></h1>
+							<p class="hero-paragraph">
+								Welcome to HubCentral, the ultimate solution for booking and managing your hubs efficiently.
+								Whether you're looking to reserve a space for work, meetings, or events, HubCentral makes the process effortless and straightforward.
+								Explore our user-friendly platform designed to cater to all your booking needs with just a few clicks.
+							</p>
+							<div class="hero-cta">
+								<a class="button button-primary button-wide-mobile" asp-action="SignUp" asp-controller="Account">Sign Up</a>
+								<a class="button button-primary button-wide-mobile" asp-action="Login" asp-controller="Account">Sign In</a>
+							</div>
+						</div>
+						<div class="mockup-container">
+							<div class="mockup-bg">
+								<img src="~/css/images/iphone-hero-bg.svg" alt="iPhone illustration">
+							</div>
+							<img class="device-mockup" src="~/css/images/iphone-hero.png" alt="iPhone Hero">
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
 
-            <!-- Slide 1 -->
-            <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg);">
-                <div class="carousel-container">
-                    <div class="carousel-content">
-                        <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Hub Booker</span></h2>
-                        <p class="animate__animated animate__fadeInUp">
-                            We're thrilled to have you here! HubBooker is your ultimate destination for finding and booking the perfect hub for your needs.
-                            Whether you're looking for a coworking space, a meeting room, or a venue for your next big event, we've got you covered.
-                        </p>
-                        <a asp-controller="Account" asp-action="SignUp" class="btn-get-started animate__animated ">Create Account</a>
-                        <h4 class="btn-get-started animate__animated animate__fadeInUp" >Or</h4>
-                        <a asp-controller="Account" asp-action="Login" class="btn-get-started animate__animated ">Log in</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="carousel-item">
-                <div class="carousel-container">
-                    <div class="carousel-content">
-                        <h2 class="animate__animated animate__fadeInDown">Explore Diverse Spaces Tailored to Your Needs</h2>
-                        <p class="animate__animated animate__fadeInUp">Discover a wide range of options, from cozy workspaces to spacious conference rooms, all designed to meet your requirements. Our user-friendly platform makes it easy to browse, book, and manage your reservations in just a few clicks.</p>
-                        <a asp-controller="Account" asp-action="Sign Up" class="nav-link">Create Account</a>
-                        <h4 class="btn-get-started animate__animated animate__fadeInUp align-content-md-center">Or</h4>
-                        <a asp-controller="Account" asp-action="Login" class="nav-link">Log in</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="carousel-item">
-                <div class="carousel-container">
-                    <div class="carousel-content">
-                        <h2 class="animate__animated animate__fadeInDown">Join Our Trusted Community of Hub Seekers</h2>
-                        <p class="animate__animated animate__fadeInUp">Join our community of professionals and event organizers who trust HubBooker to provide them with the best spaces. Start exploring now and find the ideal hub for your next endeavor.</p>
-                        <a asp-controller="Account" asp-action="Sign Up" class="btn btn-primary">Create Account</a>
-                        <h4 class="btn-get-started animate__animated animate__fadeInUp align-content-md-center">Or</h4>
-                        <a asp-controller="Account" asp-action="Login" class="btn-get-started animate__animated animate__fadeInUp ">Log in</a><
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
+		<section class="features-extended section">
+			<div class="features-extended-inner section-inner">
+				<div class="features-extended-wrap">
+					<div class="container">
+						<div class="feature-extended">
+							<div class="feature-extended-image">
+								<div class="mockup-bg">
+									<img src="~/css/images/iphone-feature-bg-01.svg" alt="iPhone Feature 01 illustration">
+								</div>
+								<img class="device-mockup is-revealing" src="~/css/images/iphone-feature-01.png" alt="iPhone Feature 01">
+							</div>
+							<div class="feature-extended-body is-revealing">
+								<h3 class="mt-0 mb-16">Discover the Ease of Booking.</h3>
+								<p class="m-0">
+									At HubCentral, we believe that booking a space should be as easy as possible. Our intuitive interface allows you to quickly find and reserve the perfect hub for any occasion.
+									With real-time availability and instant confirmations, you can plan your activities without any hassle. Experience the convenience of seamless bookings with HubCentral.
+								</p>
+							</div>
+						</div>
+						<div class="feature-extended">
+							<div class="feature-extended-image">
+								<div class="mockup-bg">
+									<img src="~/css/images/iphone-feature-bg-02.svg" alt="iPhone Feature 02 illustration">
+								</div>
+								<img class="device-mockup is-revealing" src="~/css/images/iphone-feature-02.png" alt="iPhone Feature 02">
+							</div>
+							<div class="feature-extended-body is-revealing">
+								<h3 class="mt-0 mb-16">Your Perfect Hub Awaits.</h3>
+								<p class="m-0">
+									Welcome to a world of flexible and adaptable hub spaces tailored to your needs.
+									Whether you require a quiet workspace, a collaborative meeting area, or a venue for your next event, HubCentral offers a diverse range of options.
+									Browse through our extensive listings, each equipped with detailed descriptions and amenities to help you make the best choice..
+								</p>
+							</div>
+						</div>
+						<div class="feature-extended">
+							<div class="feature-extended-image">
+								<div class="mockup-bg">
+									<img src="~/css/images/iphone-feature-bg-03.svg" alt="iPhone Feature 03 illustration">
+								</div>
+								<img class="device-mockup is-revealing" src="~/css/images/iphone-feature-03.png" alt="iPhone Feature 03">
+							</div>
+							<div class="feature-extended-body is-revealing">
+								<h3 class="mt-0 mb-16"> Streamlined Hub Management.</h3>
+								<p class="m-0">
+									Managing your hub bookings has never been easier.
+									HubCentral provides a comprehensive dashboard where you can view, modify, and cancel your reservations with ease.
+									Our platform is designed to support busy professionals, offering tools and features that save you time and enhance your productivity. Join us today and simplify your booking experience.
+								</p>
+							</div>
+						</div>
+						<div class="feature-extended">
+							<div class="feature-extended-image">
+								<div class="mockup-bg">
+									<img src="~/css/images/iphone-feature-bg-04.svg" alt="iPhone Feature 04 illustration">
+								</div>
+								<img class="device-mockup is-revealing" src="~/css/images/iphone-feature-04.png" alt="iPhone Feature 04">
+							</div>
+							<div class="feature-extended-body is-revealing">
+								<h3 class="mt-0 mb-16">Elevate Your Booking Experience.</h3>
+								<p class="m-0">
+									Welcome to the future of hub bookings. HubCentral combines advanced technology with user-centric design to offer a smart, simple, and reliable booking experience.
+									Whether you're a freelancer, a corporate team, or an event organizer, our platform adapts to your unique requirements.
+									Discover how easy booking can be with HubCentral..
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+@* 	</div> *@
+@* </div> *@
