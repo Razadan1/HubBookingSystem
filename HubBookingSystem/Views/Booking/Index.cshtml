@@ -44,14 +44,14 @@
                         <td>
                             <div class="btn-group" role="group">
                                 <a asp-controller="Booking" asp-action="Edit" asp-route-id="@obj.BookId" class="btn btn-primary">
-                                    Edit <i class="bi bi-calendar-plus-fill"></i>
+                                    Edit
                                 </a>
                             </div>
                         </td>
                         <td>
                             <div class="btn-group" role="group">
                                 <a asp-controller="Booking" asp-action="Delete" asp-route-id="@obj.BookId" class="btn btn-primary">
-                                    Delete <i class="bi bi-calendar-plus-fill"></i>
+                                    Delete
                                 </a>
                             </div>
                         </td>
@@ -63,5 +63,10 @@
     else
     {
         <p>No bookings available.</p>
+        <div class="col-6 text-end">
+            <a asp-controller="Booking" asp-action="Create" class="btn btn-primary">
+                Make a booking <i class="bi bi-calendar-plus-fill"></i>
+            </a>
+        </div>
     }
 </div>

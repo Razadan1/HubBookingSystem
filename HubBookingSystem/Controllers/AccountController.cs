@@ -30,29 +30,29 @@ namespace HubBookingSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            // if (model == null)
-            // {
-            //     ModelState.AddModelError(string.Empty, "Invalid Login attempt");
-            //     _notyfService.Warning("Invalid Login attempt!");
-            //     return View(model);
-            // }
+            if (model == null)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid Login attempt");
+                _notyfService.Warning("Invalid Login attempt!");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                var user = await _userManager.FindByNameAsync(model.Username);
-                // if (user == null)
-                // {
-                //     ModelState.AddModelError(string.Empty, "Invalid Login attempt.");
-                //     _notyfService.Warning("Invalid Login attempt!");
-                //     return View(model);
-                // }
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid Login attempt.");
+                    _notyfService.Warning("Invalid Login attempt!");
+                    return View(model);
+                }
                 var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, false, lockoutOnFailure: false);
-                
-                // if(_userManager == null)
-                // {
-                //     ModelState.AddModelError(string.Empty, "Invalid Login attempt.");
-                //     _notyfService.Warning("Invalid Login attempt!");
-                //     return View(model);
-                // }
+
+                if (_userManager == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid Login attempt.");
+                    _notyfService.Warning("Invalid Login attempt!");
+                    return View(model);
+                }
 
                 if (result.Succeeded)
                 {
